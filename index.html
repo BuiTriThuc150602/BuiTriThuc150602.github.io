@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Âm Thanh Hay</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/jquery-3.6.0.min.js"></script>
+    <script src="../JS/bootstrap.min.js"></script>
+    <script src="../JS/data.js"></script>
+    <script src="../JS/account.js"></script>
+    <script src="../JS/main.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand border text-success font-weight-bold" href="index.html">Âm Thanh Hay</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 nav-tabs" role="tablist">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Trang Chủ <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recruitment.html">Tuyển Dụng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="GioiThieu.html">Giới Thiệu</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <span id="error" class="text-danger font-italic"></span>
+                    <input id="txtSearch" class="form-control mr-2" type="text" placeholder="Tìm Kiếm">
+                    <button id="btnSearch" class="btn btn-success mr-2" type="button">Tìm Kiếm</button>
+                </form>
+                <div id="loginForm" class="navbar-rigth">
+                    <button id="btnLogin" class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#loginModal">Đăng Nhập</button>
+                </div>
+            </div>
+        </div>
+        
+    </nav>
+    <div class="container-fluid">
+        <div class="heading row">
+            <a href="index.html" class="col-md-4"><img src="../IMAGE/logo1.PNG" alt="logo" id="logo"></a>
+            <img src="../IMAGE/heading.PNG" alt="banner" class="col-md-8" id="head">
+        </div>
+        <div class="nav navbar navbar-expand-md bg-danger">
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+                        Danh Mục Sản Phẩm
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#SKProducts">Loa Sân Khấu</a>
+                        <a class="dropdown-item" href="#GDProducts">Loa Karaoke Gia Đình</a>
+                        <a class="dropdown-item" href="#LRProducts">Loa Bass Và Treble Rời</a>
+                        <a class="dropdown-item" href="#PKProducts">Phụ Kiện Âm Thanh</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link  text-light" href="cart.html"><i class="fa-solid fa-cart-arrow-down"></i>
+                        Giỏ Hàng</a></li>
+            </ul>
+        </div>
+
+        <div class="banner">
+            <img src="../IMAGE/khuyenMai.jpg" alt="banner">
+        </div>
+
+    </div>
+    <div class="container-fluid">
+        <h2 id="titleResult" class="font-italic text-light bg-danger p-2 mt-5">Sản phẩm mới</h2>
+        <div class="row" id="newProducts"></div>
+    </div>
+    <div class="container-fluid">
+        <h2 class="font-italic text-light bg-danger p-2 mt-5">Loa Sân Khấu</h2>
+        <div class="row" id="SKProducts"></div>
+        <h5 class="row justify-content-end font-italic pr-5"><a href="ListProduct.html"onclick="showAllProduct('sk')">Xem Thêm <i class="fa-solid fa-circle-right"></i></a></h5>
+    </div>
+    <div class="container-fluid">
+        <h2 class="font-italic text-light bg-danger p-2 mt-5">Loa Karaoke Gia Đình</h2>
+        <div class="row" id="GDProducts"></div>
+        <h5 class="row justify-content-end font-italic pr-5"><a href="ListProduct.html" onclick="showAllProduct('gd')">Xem Thêm <i class="fa-solid fa-circle-right"></i></a></h5>
+    </div>
+    <div class="container-fluid">
+        <h2 class="font-italic text-light bg-danger p-2 mt-5">Loa Rời</h2>
+        <div class="row" id="LRProducts"></div>
+        <h5 class="row justify-content-end font-italic pr-5"><a href="ListProduct.html" onclick="showAllProduct('lr')">Xem Thêm <i class="fa-solid fa-circle-right"></i></a></h5>
+    </div>
+    <div class="container-fluid">
+        <h2 class="font-italic text-light bg-danger p-2 mt-5">Phụ Kiện Âm Thanh</h2>
+        <div class="row" id="PKProducts"></div>
+        <h5 class="row justify-content-end font-italic pr-5"><a href="ListProduct.html" onclick="showAllProduct('pk')">Xem Thêm <i class="fa-solid fa-circle-right"></i></a></h5>
+    </div>
+    
+    <!-- Modal Login -->
+    <div class="modal fade" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-success">Đăng Nhập</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <form action="get" class="form">
+                        <div class="form-group form-row">
+                            <label for="txtUserName" class="col-4">Tên Đăng Nhập</label>
+                            <div class="col-8">
+                                <input type="text" id="txtUserName" class="form-control col-8" placeholder="Tên Đăng Nhập">
+                                <span id="errorLoginName" class="text-danger font-italic"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label for="txtPassword" class="col-4">Mật Khẩu</label>
+                            <div class="col-8">
+                                <input type="password" id="txtPassword" class="form-control col-8" placeholder="Mật Khẩu">
+                                <span id="errorLoginPass" class="text-danger font-italic"></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <span class="font-italic text-info ml-3">Nếu chưa có tài khoản, Hãy <a href="register.html">Đăng Ký</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                    <button id="btnConfirm" type="button" class="btn btn-success">Đăng Nhập</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-danger page-footer r">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Thông Tin Cửa Hàng</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Điều Khoản Và Dịch Vụ</a>
+                        </li>
+                        <li>
+                            <a href="#!">Giới Thiệu</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Quy định và chính sách</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Chính sách bảo hành</a>
+                        </li>
+                        <li>
+                            <a href="#!">Chính Sách đổi trả</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Hỗ trợ khách hàng</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Hướng Dẫn Mua Hàng</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Nhận Thông Báo khuyến mãi</h5>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-2" type="text" placeholder="Nhập Email">
+                        <button class="btn btn-success mr-2" type="submit">Gửi</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h3 class="text-center">Âm Thanh Hay - Để Giai Điệu Nói Thay Cảm Xúc</h3>
+            <p class="font-weight-bold ml-3">
+                Địa chỉ: 102/28 Phan Huy Ích, Phường 12, Q.Tân Bình, HCM <br>
+                Hotline: 0963015348 <br>
+                Emai: trithucbuittb@gmail.com <br>
+                Wedsite: amthanhhay.com <br>
+            </p>
+
+        </div>
+        <div class="footer-copyright text-center text-light ">© 2022 BuiTriThuc-20088361 </div>
+    </footer>
+</body>
+
+</html>
