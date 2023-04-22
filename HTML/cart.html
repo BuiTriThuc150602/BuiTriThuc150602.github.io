@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/jquery-3.6.0.min.js"></script>
+    <script src="../JS/bootstrap.min.js"></script>
+    <script src="../JS/cart.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand border text-success font-weight-bold" href="#">Âm Thanh Hay</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 nav-tabs" role="tablist">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Trang Chủ <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recruitment.html">Tuyển Dụng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="GioiThieu.html">Giới Thiệu</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-2" type="text" placeholder="Tìm Kiếm">
+                    <button class="btn btn-success mr-2" type="submit">Tìm Kiếm</button>
+                </form>
+                <div class="navbar-rigth">
+                    <button class="btn btn-outline-success" type="button">Đăng Nhập</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="heading row">
+            <img src="../IMAGE/logo1.PNG" alt="logo" class="col-md-4" id="logo">
+            <img src="../IMAGE/heading.PNG" alt="banner" class="col-md-8" id="head">
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h2 class="text-center text-light bg-danger p-2 mt-5">Danh Sách Sản Phẩm Trong Giỏ Hàng</h2>
+        <div class="container" id="cartList">
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="row border border-success rounded-lg p-3 mb-5 mt-3 bg-light">
+            <div class="col-md-8">
+                <label class="font-weight-bold">Tổng Thành Tiền:</label>
+                <label class="text-info font-italic" id="lblTotal"></label>
+            </div>
+            <div class="col-md-4 ">
+                <button id="btnOpen" class="btn btn-outline-success mr-2 font-weight-bold" type="button">Đặt Hàng</button>
+                <!-- data-toggle="modal" data-target="#modelId" -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modelOrder">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-success">Đặt Hàng</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <form action="get" class="form">
+                        <div class="form-group form-row">
+                            <label for="txtFullName" class="col-3 font-weight-bold">Tên Khách Hàng:</label>
+                            <div class="col-9">
+                                <input type="text" id="txtFullName" class="form-control" placeholder="Họ và Tên Khách Hàng">
+                                <span class="text-danger font-italic" id="errorFullName"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label for="txtEmail" class="col-3 font-weight-bold">Email:</label>
+                            <div class="col-9">
+                                <input type="text" id="txtEmail" class="form-control" placeholder="Email Khách Hàng">
+                                <span class="text-danger font-italic" id="errorEmail"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label for="txtAddress" class="col-3 font-weight-bold">Địa Chỉ:</label>
+                            <div class="col-9">
+                                <input type="text" id="txtAddress" class="form-control" placeholder="Địa Chỉ">
+                                <span class="text-danger font-italic" id="errorAddress"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label for="txtPhone" class="col-3 font-weight-bold">Số Điện Thoại:</label>
+                            <div class="col-9">
+                                <input type="text" id="txtPhone" class="form-control" placeholder="Số điện thoại">
+                                <span class="text-danger font-italic" id="errorPhone"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label for="txtProducts" class="col-3 font-weight-bold">Sản Phẩm Mua:</label>
+                            <div class="col-9">
+                                <textarea id="txtProducts" cols="10" rows="5" class="form-control" readonly></textarea>
+                        
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label for="txtTotal" class="col-3 font-weight-bold">Thành Tiền: </label>
+                            <div class="col-9">
+                                <input type="text" id="txtTotal" class="form-control" readonly>
+                                
+                            </div>
+                        </div>
+                        <hr>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-success" id="btnOrder">Đặt Hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-danger page-footer">
+        <div class="container-fluid text-center text-md-left ">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Thông Tin Cửa Hàng</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Điều Khoản Và Dịch Vụ</a>
+                        </li>
+                        <li>
+                            <a href="#!">Giới Thiệu</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Quy định và chính sách</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Chính sách bảo hành</a>
+                        </li>
+                        <li>
+                            <a href="#!">Chính Sách đổi trả</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Hỗ trợ khách hàng</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Hướng Dẫn Mua Hàng</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Nhận Thông Báo khuyến mãi</h5>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-2" type="text" placeholder="Nhập Email">
+                        <button class="btn btn-success mr-2" type="submit">Gửi</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h3 class="text-center">Âm Thanh Hay - Để Giai Điệu Nói Thay Cảm Xúc</h3>
+            <p class="font-weight-bold ml-3">
+                Địa chỉ: 102/28 Phan Huy Ích, Phường 12, Q.Tân Bình, HCM <br>
+                Hotline: 0963015348 <br>
+                Emai: trithucbuittb@gmail.com <br>
+                Wedsite: amthanhhay.com <br>
+            </p>
+
+        </div>
+        <div class="footer-copyright text-center text-light ">© 2022 BuiTriThuc-20088361 </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Tài Khoản</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/jquery-3.6.0.min.js"></script>
+    <script src="../JS/bootstrap.min.js"></script>
+    <script src="../JS/register.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand border text-success font-weight-bold" href="index.html">Âm Thanh Hay</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 nav-tabs" role="tablist">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Trang Chủ <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recruitment.html">Tuyển Dụng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="GioiThieu.html">Giới Thiệu</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <span id="error" class="text-danger font-italic"></span>
+                    <input id="txtSearch" class="form-control mr-2" type="text" placeholder="Tìm Kiếm">
+                    <button id="btnSearch" class="btn btn-success mr-2" type="button">Tìm Kiếm</button>
+                </form>
+                <div id="loginForm" class="navbar-rigth">
+                    <button id="btnLogin" class="btn btn-outline-success" type="button" data-toggle="modal"
+                        data-target="#loginModal">Đăng Nhập</button>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    <div class="container-fluid">
+        <div class="heading row">
+            <a href="index.html" class="col-md-4"><img src="../IMAGE/logo1.PNG" alt="logo" id="logo"></a>
+            <img src="../IMAGE/heading.PNG" alt="banner" class="col-md-8" id="head">
+        </div>
+    </div>
+    <!-- content -->
+    <div class="container border mt-5 mb-5 p-3">
+        <form action="get" class="form">
+            <div class="form-group form-row">
+                <label for="txtFullName" class="col-3 font-weight-bold">Tên Người Dùng:</label>
+                <div class="col-9">
+                    <input type="text" id="txtFullName" class="form-control" placeholder="Họ và Tên người dùng">
+                    <span class="text-danger font-italic" id="errorFullName"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group form-row">
+                <label for="txtUserName" class="col-3 font-weight-bold">Tên Đăng Nhập:</label>
+                <div class="col-9">
+                    <input type="text" id="txtUserName" class="form-control" placeholder="Tên Đăng Nhập">
+                    <span class="text-danger font-italic" id="errorUserName"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group form-row">
+                <label for="txtPassword" class="col-3 font-weight-bold">Mật Khẩu:</label>
+                <div class="col-9">
+                    <input type="password" id="txtPassword" class="form-control" placeholder="Mật Khẩu">
+                    <span class="text-danger font-italic" id="errorPassword"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group form-row">
+                <label for="txtRePassword" class="col-3 font-weight-bold">Nhập Lại Mật Khẩu:</label>
+                <div class="col-9">
+                    <input type="password" id="txtRePassword" class="form-control" placeholder="Nhập Lại Mật Khẩu">
+                    <span class="text-danger font-italic" id="errorRePassword"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group form-row">
+                <label for="txtEmail" class="col-3 font-weight-bold">Email:</label>
+                <div class="col-9">
+                    <input type="text" id="txtEmail" class="form-control" placeholder="Email người dùng">
+                    <span class="text-danger font-italic" id="errorEmail"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group form-row">
+                <label for="txtAddress" class="col-3 font-weight-bold">Địa Chỉ:</label>
+                <div class="col-9">
+                    <input type="text" id="txtAddress" class="form-control" placeholder="Địa Chỉ">
+                    <span class="text-danger font-italic" id="errorAddress"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group form-row justify-content-end">
+                <button type="button" class="btn btn-danger mr-5 w-25" id="btnCancel"><i class="fa-solid fa-ban"></i> Hủy</button>
+                <button type="button" class="btn btn-success w-25" id="btnRegist"><i class="fa-solid fa-circle-check"></i> Đăng Ký</button>
+            </div>
+        </form>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalInfo">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info">Thông Tin Tài Khoản</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="goHome()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <form action="get" class="form">
+                        <div class="form-group form-row">
+                            <label class="col-3 font-weight-bold">Tên Người Dùng:</label>
+                            <label id="accName" class="col-9"></label>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label  class="col-3 font-weight-bold">Tên Đăng Nhập:</label>
+                            <label id="accUser" class="col-9"></label>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label class="col-3 font-weight-bold">Mật Khẩu:</label>
+                            <label id="accPass" class="col-9"></label>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label class="col-3 font-weight-bold">Email:</label>
+                            <label id="accEmail" class="col-9"></label>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row">
+                            <label class="col-3 font-weight-bold">Địa Chỉ:</label>
+                            <label id="accAddress" class="col-9"></label>
+                        </div>
+                        <hr>
+                    
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="goHome()">Xác Nhận</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class="bg-danger page-footer r">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Thông Tin Cửa Hàng</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Điều Khoản Và Dịch Vụ</a>
+                        </li>
+                        <li>
+                            <a href="#!">Giới Thiệu</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Quy định và chính sách</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Chính sách bảo hành</a>
+                        </li>
+                        <li>
+                            <a href="#!">Chính Sách đổi trả</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Hỗ trợ khách hàng</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Hướng Dẫn Mua Hàng</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Nhận Thông Báo khuyến mãi</h5>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-2" type="text" placeholder="Nhập Email">
+                        <button class="btn btn-success mr-2" type="submit">Gửi</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h3 class="text-center">Âm Thanh Hay - Để Giai Điệu Nói Thay Cảm Xúc</h3>
+            <p class="font-weight-bold ml-3">
+                Địa chỉ: 102/28 Phan Huy Ích, Phường 12, Q.Tân Bình, HCM <br>
+                Hotline: 0963015348 <br>
+                Emai: trithucbuittb@gmail.com <br>
+                Wedsite: amthanhhay.com <br>
+            </p>
+
+        </div>
+        <div class="footer-copyright text-center text-light ">© 2022 BuiTriThuc-20088361 </div>
+    </footer>
+</body>
+
+</html>
